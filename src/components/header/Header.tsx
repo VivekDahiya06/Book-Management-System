@@ -30,6 +30,7 @@ const Header = () => {
     }
 
     const handle_AddBook = () => {
+        dispatch({ type: 'SET_FORM_TYPE', payload: 'add' });
         dispatch({ type: 'SET_FORM_OPEN', payload: true });
     }
 

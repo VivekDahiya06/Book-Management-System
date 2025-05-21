@@ -13,6 +13,14 @@ export const initialState: ReducerStateType = {
     alertMessage: '',
     alertType: 'error',
     bookId: 0,
+    bookDetails: {
+        id: 0,
+        title: '',
+        author: '',
+        genre: '',
+        publishedYear: 0,
+        status: 'Available',
+    }
 }
 
 export const Reducers = (state: ReducerStateType, action: ReducerActionType) => {
@@ -27,7 +35,8 @@ export const Reducers = (state: ReducerStateType, action: ReducerActionType) => 
         case 'SET_ALERT_MESSAGE': return { ...state, alertMessage: action.payload }
         case 'SET_ALERT_TYPE': return { ...state, alertType: action.payload }
         case 'SET_BOOK_ID': return { ...state, bookId: action.payload }
-        default: return state
+        case 'SET_BOOK_DETAILS': return { ...state, bookDetails: action.payload }
+        default: return state;
     }
 
 }

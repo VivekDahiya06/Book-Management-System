@@ -6,13 +6,14 @@ import {
     Box
 } from '@mui/material';
 import { useForm } from 'react-hook-form';
-import { IoIosAddCircleOutline } from "react-icons/io";
-import { POSTBooks } from '../../api/Books';
+import { PUTBooks } from '../../api/Books';
 import type { Book_Type } from '../../types/Books.types';
 import { useStore } from '../../hooks/useStore';
+import { useEffect } from 'react';
+import { FiEdit } from 'react-icons/fi';
 
 
-const Add_BookForm = () => {
+const Edit_BookForm = () => {
 
     const {
         register,
@@ -23,14 +24,21 @@ const Add_BookForm = () => {
 
     const { state, dispatch } = useStore();
 
+    useEffect(() => {
+        if (state.formOpen && state.formType === 'edit') {
+            console.log(state.bookDetails);
+            reset(state.bookDetails);
+        }
+    }, [state.formOpen, state.formType, state.bookDetails, reset, dispatch]);
+
     const SubmitForm = (data: Book_Type) => {
-        POSTBooks(data)
+        PUTBooks(data)
             .then((res) => {
                 console.log(res);
-                if (res.status === 201) {
+                if (res.status === 200 || res.status === 204) {
                     dispatch({ type: 'SET_FORM_OPEN', payload: false });
                     dispatch({ type: 'SET_ALERT_TYPE', payload: 'success' });
-                    dispatch({ type: 'SET_ALERT_MESSAGE', payload: 'Book Added' });
+                    dispatch({ type: 'SET_ALERT_MESSAGE', payload: 'Book Updated' });
                     dispatch({ type: 'TOGGLE_ALERT', payload: true });
                 }
             })
@@ -39,10 +47,11 @@ const Add_BookForm = () => {
                 dispatch({ type: 'TOGGLE_ALERT', payload: true });
                 dispatch({ type: 'SET_ALERT_TYPE', payload: 'error' });
                 dispatch({ type: 'SET_ALERT_MESSAGE', payload: err.message });
-            })
-        // Reset the form after submission
-        reset();
+            });
+
+        // reset();
     };
+
 
     const handleClose = () => {
         dispatch({ type: 'SET_FORM_OPEN', payload: false });
@@ -53,7 +62,7 @@ const Add_BookForm = () => {
 
     return (
         <Dialog
-            open={state.formOpen && state.formType === 'add'}
+            open={state.formOpen && state.formType === 'edit'}
             onClose={handleClose}
             maxWidth="sm"
         >
@@ -89,7 +98,7 @@ const Add_BookForm = () => {
                         />
                         <TextField
                             label="Title"
-                            {...register('title', { required: 'Title is required'  })}
+                            {...register('title', { required: 'Title is required' })}
                             error={!!errors.title}
                             helperText={errors.title?.message}
                         />
@@ -133,10 +142,10 @@ const Add_BookForm = () => {
                             },
                         }}
                         variant="contained"
-                        endIcon={<IoIosAddCircleOutline />}
+                        endIcon={<FiEdit />}
                         type="submit"
                     >
-                        Add
+                        Edit
                     </Button>
                 </form>
             </main>
@@ -144,4 +153,4 @@ const Add_BookForm = () => {
     );
 };
 
-export default Add_BookForm;
+export default Edit_BookForm;

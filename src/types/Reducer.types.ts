@@ -1,3 +1,5 @@
+import type { Book_Type } from "./Books.types";
+
 export interface ReducerStateType {
     page: number,
     totalPages: number,
@@ -9,6 +11,7 @@ export interface ReducerStateType {
     alertMessage: string,
     alertType: 'error' | 'success' | 'warning' | 'info',
     bookId: number,
+    bookDetails : Book_Type
 }
 
 interface ChangePageAction { type: 'CHANGE_PAGE'; payload: number };
@@ -21,6 +24,7 @@ interface SetFormTypeAction { type: 'SET_FORM_TYPE'; payload: 'add' | 'edit' };
 interface SetAlertMessageAction { type: 'SET_ALERT_MESSAGE'; payload: string };
 interface SetAlertTypeAction { type: 'SET_ALERT_TYPE'; payload: 'error' | 'success' | 'warning' | 'info' };
 interface SetBookIdAction { type: 'SET_BOOK_ID'; payload: number };
+interface SetBookDetailsAction { type: 'SET_BOOK_DETAILS'; payload: Book_Type };
 
 export type ReducerActionType =
     | ChangePageAction
@@ -32,4 +36,5 @@ export type ReducerActionType =
     | SetFormTypeAction
     | SetAlertMessageAction
     | SetAlertTypeAction
-    | SetBookIdAction;
+    | SetBookIdAction
+    | SetBookDetailsAction;

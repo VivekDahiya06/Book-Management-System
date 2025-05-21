@@ -21,7 +21,9 @@ const Book_Card: FC<Props> = ({ Book }) => {
     }
 
     const handle_BookEdit = () => {
-        console.log(`Book with index ${Book.id} Edited`);
+        dispatch({ type: 'SET_FORM_TYPE', payload: 'edit',})
+        dispatch({ type: 'SET_FORM_OPEN', payload: true });
+        dispatch({ type: 'SET_BOOK_DETAILS', payload: Book });
     }
 
     return (

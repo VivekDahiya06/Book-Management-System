@@ -14,8 +14,8 @@ export const POSTBooks = async (book: Book_Type) => {
 }
 
 export const PUTBooks = async (book: Book_Type) => {
-    const response = await axios.put(url+`/${book.id}`, { book });
-    return response.data;
+    const response = await axios.patch(url+`/${book.id}`, { book });
+    return response;
 }
 export const DELETEBooks = async (id: number) => {
     const response = await axios.delete(url+`/${id}`);
