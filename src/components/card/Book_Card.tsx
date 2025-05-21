@@ -1,27 +1,18 @@
 import { Button, Chip } from '@mui/material';
 import { FiEdit } from "react-icons/fi";
 import { MdDelete } from "react-icons/md";
-import { useContext, type FC } from 'react';
+import { type FC } from 'react';
 import type { Book_Type } from '../../types/Books.types';
 import { GiBookmarklet } from "react-icons/gi";
-import { StoreContext } from '../../store/StoreProvider';
+import { useStore } from '../../hooks/useStore';
 
 interface Props {
     Book: Book_Type
 }
 
 const Book_Card: FC<Props> = ({ Book }) => {
-
-
-    const Store = useContext(StoreContext);
-    if (!Store) {
-        return (
-            <div className='h-screen flex justify-center items-center'>
-                <h1 className="text-xl text-red-500">Something went wrong.</h1>
-            </div>
-        );
-    }    
-    const { dispatch } = Store;
+      
+    const { dispatch } = useStore();
 
 
     const handle_BookDelete = () => {

@@ -1,10 +1,10 @@
 import { IconButton, TextField, InputAdornment, Tooltip, styled, type TooltipProps, tooltipClasses } from '@mui/material';
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import logo from '/images/logo.png';
 import { MdSearch } from "react-icons/md";
 import { IoMenu } from "react-icons/io5";
 import { FaBookMedical } from "react-icons/fa";
-import { StoreContext } from '../../store/StoreProvider';
+import { useStore } from '../../hooks/useStore';
 
 const Header = () => {
 
@@ -22,15 +22,8 @@ const Header = () => {
 
 
     const [search, setSearch] = useState<string>("");
-    const Store = useContext(StoreContext);
-    if (!Store) {
-        return (
-            <div className='h-screen flex justify-center items-center'>
-                <h1 className="text-xl text-red-500">Something went wrong.</h1>
-            </div>
-        );
-    }
-    const { dispatch } = Store;
+    
+    const { dispatch } = useStore();
 
     const handle_Search = () => {
         console.log(search);

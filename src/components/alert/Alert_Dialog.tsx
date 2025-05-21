@@ -1,19 +1,11 @@
 import { Alert, Button, Dialog, DialogContent, DialogTitle, Snackbar } from '@mui/material';
-import { useContext } from 'react';
-import { StoreContext } from '../../store/StoreProvider';
 import { DELETEBooks } from '../../api/Books';
+import { useStore } from '../../hooks/useStore';
 
 const Alert_Dialog = () => {
 
-    const Store = useContext(StoreContext);
-    if (!Store) {
-        return (
-            <div className='h-screen flex justify-center items-center'>
-                <h1 className="text-xl text-red-500">Something went wrong.</h1>
-            </div>
-        );
-    }
-    const { state, dispatch } = Store;
+
+    const { state, dispatch } = useStore();
 
 
     const handleAlert = () => {

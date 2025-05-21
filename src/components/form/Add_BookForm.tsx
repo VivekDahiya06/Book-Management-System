@@ -6,14 +6,14 @@ import {
     Box
 } from '@mui/material';
 import { useForm } from 'react-hook-form';
-import { useContext } from 'react';
-import { StoreContext } from '../../store/StoreProvider';
+// import { useContext } from 'react';
+// import { StoreContext } from '../../store/StoreProvider';
 import { POSTBooks } from '../../api/Books';
 import type { Book_Type } from '../../types/Books.types';
+import { useStore } from '../../hooks/useStore';
 
 
 const Add_BookForm = () => {
-    const Store = useContext(StoreContext);
 
     const {
         register,
@@ -22,15 +22,7 @@ const Add_BookForm = () => {
         reset,
     } = useForm<Book_Type>();
 
-    if (!Store) {
-        return (
-            <div className="h-screen flex justify-center items-center">
-                <h1 className="text-xl text-red-500">Something went wrong.</h1>
-            </div>
-        );
-    }
-
-    const { state, dispatch } = Store;
+    const { state, dispatch } = useStore();
 
     const SubmitForm = (data: Book_Type) => {
         POSTBooks(data)
@@ -65,7 +57,6 @@ const Add_BookForm = () => {
             open={state.formOpen}
             onClose={handleClose}
             maxWidth="sm"
-        // fullWidth
         >
             <DialogTitle
                 sx={{
