@@ -1,5 +1,6 @@
 import { createContext, useReducer, type FC, type ReactNode } from 'react'
-import { initialState, Reducers, type ReducerActionType, type ReducerStateType } from './Reducers';
+import { initialState, Reducers } from './Reducers';
+import type { ReducerActionType, ReducerStateType } from '../types/Reducer.types';
 
 
 interface Props{

@@ -7,20 +7,18 @@ import { CircularProgress } from '@mui/material';
 import Footer from './components/footer/Footer';
 import { StoreContext } from './store/StoreProvider';
 import { useContext, useEffect } from 'react';
+import { GETBooks } from './api/Books';
+import Alert_Dialog from './components/alert/Alert_Dialog';
+import Add_BookForm from './components/form/Add_BookForm';
 
 const App = () => {
-
-  const getBooks = async () => {
-    const response = await fetch('http://localhost:3000/books');
-    return response.json();
-  }
 
 
   const Store = useContext(StoreContext);
 
   const { data, error, isLoading } = useQuery({
     queryKey: ['books'],
-    queryFn: getBooks
+    queryFn: GETBooks
   });
 
   useEffect(() => {
@@ -30,7 +28,7 @@ const App = () => {
     }
   }, [data]);
 
-  
+
   if (!Store) {
     return (
       <div className='h-screen flex justify-center items-center'>
@@ -75,12 +73,14 @@ const App = () => {
       <main className="w-full h-full p-3">
         <div className="w-full h-full flex flex-wrap align-center justify-center gap-10 p-5">
           {
-            paginateData().map((book: Book_Type, index: number) => (
-              <Book_Card key={book.id} Book={book} index={index} />
+            paginateData().map((book: Book_Type) => (
+              <Book_Card key={book.id} Book={book} />
             ))
           }
         </div>
       </main>
+      <Alert_Dialog />
+      <Add_BookForm />
       <Footer />
     </>
   )

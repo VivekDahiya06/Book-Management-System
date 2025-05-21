@@ -1,22 +1,32 @@
-export interface ReducerStateType {
-    page: number,
-    totalPages: number
-}
+import type { ReducerActionType, ReducerStateType } from "../types/Reducer.types"
 
-export interface ReducerActionType {
-    type: 'CHANGE_PAGE' | 'SET_TOTAL_PAGES',
-    payload: number
-}
+
 
 export const initialState: ReducerStateType = {
     page: 1,
-    totalPages: 0
+    totalPages: 0,
+    deleteAlert: false,
+    editAlert: false,
+    alertOpen: false,
+    formOpen: false,
+    formType: 'add',
+    alertMessage: '',
+    alertType: 'error',
+    bookId: 0,
 }
 
 export const Reducers = (state: ReducerStateType, action: ReducerActionType) => {
     switch (action.type) {
         case 'CHANGE_PAGE': return { ...state, page: action.payload }
         case 'SET_TOTAL_PAGES': return { ...state, totalPages: action.payload }
+        case 'SET_DELETE_ALERT': return { ...state, deleteAlert: action.payload }
+        case 'SET_EDIT_ALERT': return { ...state, editAlert: action.payload }
+        case 'TOGGLE_ALERT': return { ...state, alertOpen: action.payload }
+        case 'SET_FORM_OPEN': return { ...state, formOpen: action.payload }
+        case 'SET_FORM_TYPE': return { ...state, formType: action.payload }
+        case 'SET_ALERT_MESSAGE': return { ...state, alertMessage: action.payload }
+        case 'SET_ALERT_TYPE': return { ...state, alertType: action.payload }
+        case 'SET_BOOK_ID': return { ...state, bookId: action.payload }
         default: return state
     }
 

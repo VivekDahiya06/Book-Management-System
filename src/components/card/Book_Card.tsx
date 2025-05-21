@@ -1,33 +1,44 @@
 import { Button, Chip } from '@mui/material';
 import { FiEdit } from "react-icons/fi";
 import { MdDelete } from "react-icons/md";
-import type { FC } from 'react';
+import { useContext, type FC } from 'react';
 import type { Book_Type } from '../../types/Books.types';
 import { GiBookmarklet } from "react-icons/gi";
+import { StoreContext } from '../../store/StoreProvider';
 
 interface Props {
-    Book: Book_Type,
-    index: number
+    Book: Book_Type
 }
 
-const Book_Card: FC<Props> = ({ Book, index }) => {
+const Book_Card: FC<Props> = ({ Book }) => {
 
-    
+
+    const Store = useContext(StoreContext);
+    if (!Store) {
+        return (
+            <div className='h-screen flex justify-center items-center'>
+                <h1 className="text-xl text-red-500">Something went wrong.</h1>
+            </div>
+        );
+    }    
+    const { dispatch } = Store;
+
 
     const handle_BookDelete = () => {
-        console.log(`Book with index ${index} Deleted`);
+        dispatch({ type: 'SET_DELETE_ALERT', payload: true });
+        dispatch({ type: 'SET_BOOK_ID', payload: Book.id });
     }
 
     const handle_BookEdit = () => {
-        console.log(`Book with index ${index} Edited`);
+        console.log(`Book with index ${Book.id} Edited`);
     }
 
     return (
         <main className="w-full max-w-110 border-2 rounded-xl border-black">
             <section className="w-full flex flex-col items-center justify-start border-b-2 border-black gap-3 ">
-                <header className="w-full p-6 flex items-center justify-between rounded-tl-xl rounded-tr-xl text-white bg-[#019ECA]">
+                <header className="w-full p-6 flex items-center justify-between rounded-tl-xl rounded-tr-xl text-black bg-[#c5b500]">
                     <div className="flex items-start justify-start gap-3">
-                        <GiBookmarklet size={30} color={'#fff'} />
+                        <GiBookmarklet size={30} color={'#000'} />
                         <h1 className="text-2xl">{Book.title}</h1>
                     </div>
                 </header>
@@ -45,7 +56,7 @@ const Book_Card: FC<Props> = ({ Book, index }) => {
                     <Button
                         variant="contained"
                         endIcon={<FiEdit />}
-                        color="success"
+                        color="primary"
                         onClick={handle_BookEdit}
                         sx={{ textTransform: "none" }}
                     >
@@ -54,7 +65,7 @@ const Book_Card: FC<Props> = ({ Book, index }) => {
                     <Button
                         variant="contained"
                         endIcon={<MdDelete />}
-                        color="error"
+                        color="primary"
                         onClick={handle_BookDelete}
                         sx={{ textTransform: "none" }}
                     >

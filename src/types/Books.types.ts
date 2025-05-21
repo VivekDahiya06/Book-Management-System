@@ -5,5 +5,4 @@ export interface Book_Type {
     genre: string;
     publishedYear: number;
     status: string;
-    coverImage: string;
 }
