@@ -10,6 +10,7 @@ export interface ReducerStateType {
     formType: 'add' | 'edit',
     alertMessage: string,
     alertType: 'error' | 'success' | 'warning' | 'info',
+    searchBookFilter: string,
     bookId: number,
     bookDetails : Book_Type
 }
@@ -23,8 +24,10 @@ interface SetFormOpenAction { type: 'SET_FORM_OPEN'; payload: boolean };
 interface SetFormTypeAction { type: 'SET_FORM_TYPE'; payload: 'add' | 'edit' };
 interface SetAlertMessageAction { type: 'SET_ALERT_MESSAGE'; payload: string };
 interface SetAlertTypeAction { type: 'SET_ALERT_TYPE'; payload: 'error' | 'success' | 'warning' | 'info' };
+interface SetSearchBookFilterAction { type: 'SET_SEARCH_BOOK_FILTER'; payload: string };
 interface SetBookIdAction { type: 'SET_BOOK_ID'; payload: number };
 interface SetBookDetailsAction { type: 'SET_BOOK_DETAILS'; payload: Book_Type };
+
 
 export type ReducerActionType =
     | ChangePageAction
@@ -36,5 +39,6 @@ export type ReducerActionType =
     | SetFormTypeAction
     | SetAlertMessageAction
     | SetAlertTypeAction
+    | SetSearchBookFilterAction
     | SetBookIdAction
     | SetBookDetailsAction;

@@ -12,6 +12,7 @@ export const initialState: ReducerStateType = {
     formType: 'add',
     alertMessage: '',
     alertType: 'error',
+    searchBookFilter: '',
     bookId: 0,
     bookDetails: {
         id: 0,
@@ -34,6 +35,7 @@ export const Reducers = (state: ReducerStateType, action: ReducerActionType) => 
         case 'SET_FORM_TYPE': return { ...state, formType: action.payload }
         case 'SET_ALERT_MESSAGE': return { ...state, alertMessage: action.payload }
         case 'SET_ALERT_TYPE': return { ...state, alertType: action.payload }
+        case 'SET_SEARCH_BOOK_FILTER': return { ...state, searchBookFilter: action.payload }
         case 'SET_BOOK_ID': return { ...state, bookId: action.payload }
         case 'SET_BOOK_DETAILS': return { ...state, bookDetails: action.payload }
         default: return state;

@@ -26,7 +26,8 @@ const Header = () => {
     const { dispatch } = useStore();
 
     const handle_Search = () => {
-        console.log(search);
+        dispatch({ type: 'SET_SEARCH_BOOK_FILTER', payload: search });
+        dispatch({ type: 'CHANGE_PAGE', payload: 1 });
     }
 
     const handle_AddBook = () => {

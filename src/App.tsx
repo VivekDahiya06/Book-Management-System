@@ -21,16 +21,31 @@ const App = () => {
   const { state, dispatch } = useStore();
   const [filter, setFilter] = useState({ open: false, type: '', value: '' });
 
-  
+
   const filteredData = useMemo(() => {
     if (!data) return [];
-    const value = filter.value.trim().toLowerCase();
+
+    const titleInput = state.searchBookFilter.trim().toLowerCase();
+    const filterValue = filter.value.trim().toLowerCase();
+
     return data.filter((book: Book_Type) => {
-      if (filter.type === 'Genre') return book.genre?.toLowerCase().includes(value);
-      if (filter.type === 'Status') return book.status?.toLowerCase().includes(value);
-      return true; // fallback if type is not set
+      const matchesTitle = titleInput
+        ? book.title?.toLowerCase().includes(titleInput)
+        : true;
+
+      let matchesFilter = true;
+      if (filter.type === 'Genre') {
+        matchesFilter = book.genre?.toLowerCase().includes(filterValue);
+      } else if (filter.type === 'Status') {
+        matchesFilter = book.status?.toLowerCase().includes(filterValue);
+      } else if (filter.type === 'Author') {
+        matchesFilter = book.author?.toLowerCase().includes(filterValue);
+      }
+
+      return matchesTitle && matchesFilter;
     });
-  }, [data, filter]);
+  }, [data, filter, state.searchBookFilter]);
+
 
   const paginateData = () => {
     const start = (state.page - 1) * booksPerPage;
@@ -80,7 +95,8 @@ const App = () => {
                       color: filter.type === 'Genre' ? 'white' : 'black'
                     }}
                     onClick={() => setFilter({ ...filter, type: 'Genre' })}
-                  >Genre</Button>
+                  >Genre
+                  </Button>
                   <Button
                     variant='outlined'
                     style={{
@@ -88,7 +104,17 @@ const App = () => {
                       color: filter.type === 'Status' ? 'white' : 'black'
                     }}
                     onClick={() => setFilter({ ...filter, type: 'Status' })}
-                  >Status</Button>
+                  >Status
+                  </Button>
+                  <Button
+                    variant='outlined'
+                    style={{
+                      backgroundColor: filter.type === 'Author' ? 'black' : 'white',
+                      color: filter.type === 'Author' ? 'white' : 'black'
+                    }}
+                    onClick={() => setFilter({ ...filter, type: 'Author' })}
+                  >Author
+                  </Button>
                 </ButtonGroup>
               )}
             </div>
