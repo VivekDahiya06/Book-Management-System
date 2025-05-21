@@ -12,6 +12,8 @@ interface Props {
 
 const Book_Card: FC<Props> = ({ Book, index }) => {
 
+    
+
     const handle_BookDelete = () => {
         console.log(`Book with index ${index} Deleted`);
     }
@@ -50,7 +52,7 @@ const Book_Card: FC<Props> = ({ Book, index }) => {
                         Edit
                     </Button>
                     <Button
-                        variant="outlined"
+                        variant="contained"
                         endIcon={<MdDelete />}
                         color="error"
                         onClick={handle_BookDelete}

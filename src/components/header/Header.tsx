@@ -1,6 +1,6 @@
 import { IconButton, TextField, InputAdornment } from '@mui/material';
 import { useState } from 'react';
-import logo from '../../../public/images/Logo.webp';
+import logo from '/images/Logo.webp';
 import { MdSearch } from "react-icons/md";
 import { IoMenu } from "react-icons/io5";
 
