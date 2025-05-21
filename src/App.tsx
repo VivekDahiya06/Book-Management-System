@@ -21,7 +21,7 @@ const App = () => {
   const { state, dispatch } = useStore();
   const [filter, setFilter] = useState({ open: false, type: '', value: '' });
 
-  // 🧠 Hook must come before conditional returns
+  
   const filteredData = useMemo(() => {
     if (!data) return [];
     const value = filter.value.trim().toLowerCase();

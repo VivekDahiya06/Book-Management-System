@@ -62,7 +62,7 @@ const Header = () => {
                         InputProps={{
                             endAdornment: (
                                 <InputAdornment position="end">
-                                    <IconButton>
+                                    <IconButton onClick={handle_Search}>
                                         <MdSearch size={24} />
                                     </IconButton>
                                 </InputAdornment>
