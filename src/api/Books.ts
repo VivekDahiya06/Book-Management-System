@@ -1,7 +1,7 @@
 import axios from "axios";
 import type { Book_Type } from "../types/Books.types";
 
-const url = 'http://localhost:3000/books';
+const url = 'https://my-json-server.typicode.com/VivekDahiya06/api-books/books';
 
 export const GETBooks = async () => {
     const response = await axios.get(url);
