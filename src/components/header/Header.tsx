@@ -42,9 +42,9 @@ const Header = () => {
     return (
         <header className='w-full h-20 flex items-center justify-between p-5 bg-[#c5b500]'>
             <nav className='w-full h-full flex items-center justify-between'>
-                <div className="flex items-center justify-start">
-                    <img src={logo} alt="BookHive Logo" loading='lazy' className='w-40 h-40' />
-                    <h1 className="text-3xl font-bold">BookHive</h1>
+                <div className="flex items-center justify-start sm:gap-3">
+                    <img src={logo} alt="BookHive Logo" loading='lazy' className='w-20 sm:w-25 max-w-full h-15 sm:h-19 max-h-full' />
+                    <h1 className="text-xl sm:text-3xl font-bold">BookHive</h1>
                 </div>
                 <div className='flex md:hidden'>
                     <IconButton onClick={handle_openMenu}>
