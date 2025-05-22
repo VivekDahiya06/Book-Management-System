@@ -1,13 +1,14 @@
-import { Alert, Button, Dialog, DialogContent, DialogTitle, Snackbar } from '@mui/material';
-import { DELETEBooks } from '../../api/Books';
 import { useStore } from '../../hooks/useStore';
+import { DELETEBooks } from '../../api/Books';
+import { Alert, Button, Dialog, DialogContent, DialogTitle, Snackbar } from '@mui/material';
 
 const Alert_Dialog = () => {
 
-
+    // States and Hooks
     const { state, dispatch } = useStore();
 
 
+    // Functions
     const handleAlert = () => {
         DELETEBooks(state.bookId)
             .then((res) => {
@@ -27,6 +28,8 @@ const Alert_Dialog = () => {
             })
         dispatch({ type: 'SET_BOOK_ID', payload: 0 });
     }
+
+
     return (
         <>
             {/* Alert Message for Error */}
@@ -92,4 +95,4 @@ const Alert_Dialog = () => {
     )
 }
 
-export default Alert_Dialog
+export default Alert_Dialog;

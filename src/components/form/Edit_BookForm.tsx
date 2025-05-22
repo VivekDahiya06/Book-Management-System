@@ -1,28 +1,17 @@
-import {
-    Button,
-    TextField,
-    Dialog,
-    DialogTitle,
-    Box
-} from '@mui/material';
-import { useForm } from 'react-hook-form';
-import { PUTBooks } from '../../api/Books';
-import type { Book_Type } from '../../types/Books.types';
-import { useStore } from '../../hooks/useStore';
 import { useEffect } from 'react';
+import { useStore } from '../../hooks/useStore';
+import { useForm } from 'react-hook-form';
+import type { Book_Type } from '../../types/Books.types';
+import { PUTBooks } from '../../api/Books';
 import { FiEdit } from 'react-icons/fi';
+import { Button, TextField, Dialog, DialogTitle, Box } from '@mui/material';
 
 
 const Edit_BookForm = () => {
 
-    const {
-        register,
-        handleSubmit,
-        formState: { errors },
-        reset,
-    } = useForm<Book_Type>();
-
+    // States and Hooks
     const { state, dispatch } = useStore();
+    const { register, handleSubmit, formState: { errors }, reset, } = useForm<Book_Type>();
 
     useEffect(() => {
         if (state.formOpen && state.formType === 'edit') {
@@ -31,6 +20,8 @@ const Edit_BookForm = () => {
         }
     }, [state.formOpen, state.formType, state.bookDetails, reset, dispatch]);
 
+
+    // Functions
     const SubmitForm = (data: Book_Type) => {
         PUTBooks(data)
             .then((res) => {
@@ -52,12 +43,10 @@ const Edit_BookForm = () => {
         // reset();
     };
 
-
     const handleClose = () => {
         dispatch({ type: 'SET_FORM_OPEN', payload: false });
         reset();
     };
-
 
 
     return (

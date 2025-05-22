@@ -1,28 +1,19 @@
-import {
-    Button,
-    TextField,
-    Dialog,
-    DialogTitle,
-    Box
-} from '@mui/material';
-import { useForm } from 'react-hook-form';
-import { IoIosAddCircleOutline } from "react-icons/io";
-import { POSTBooks } from '../../api/Books';
-import type { Book_Type } from '../../types/Books.types';
 import { useStore } from '../../hooks/useStore';
+import { useForm } from 'react-hook-form';
+import type { Book_Type } from '../../types/Books.types';
+import { POSTBooks } from '../../api/Books';
+import { IoIosAddCircleOutline } from "react-icons/io";
+import { Button, TextField, Dialog, DialogTitle, Box } from '@mui/material';
 
 
 const Add_BookForm = () => {
 
-    const {
-        register,
-        handleSubmit,
-        formState: { errors },
-        reset,
-    } = useForm<Book_Type>();
-
+    // States & Hooks
     const { state, dispatch } = useStore();
+    const { register, handleSubmit, formState: { errors }, reset } = useForm<Book_Type>();
 
+
+    // Functions
     const SubmitForm = (data: Book_Type) => {
         POSTBooks(data)
             .then((res) => {
@@ -48,7 +39,6 @@ const Add_BookForm = () => {
         dispatch({ type: 'SET_FORM_OPEN', payload: false });
         reset();
     };
-
 
 
     return (
@@ -89,7 +79,7 @@ const Add_BookForm = () => {
                         />
                         <TextField
                             label="Title"
-                            {...register('title', { required: 'Title is required'  })}
+                            {...register('title', { required: 'Title is required' })}
                             error={!!errors.title}
                             helperText={errors.title?.message}
                         />

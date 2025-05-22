@@ -1,20 +1,23 @@
-import { Button, Chip } from '@mui/material';
+import { type FC } from 'react';
+import { useStore } from '../../hooks/useStore';
+import type { Book_Type } from '../../types/Books.types';
 import { FiEdit } from "react-icons/fi";
 import { MdDelete } from "react-icons/md";
-import { type FC } from 'react';
-import type { Book_Type } from '../../types/Books.types';
 import { GiBookmarklet } from "react-icons/gi";
-import { useStore } from '../../hooks/useStore';
+import { Button, Chip } from '@mui/material';
 
+// Type Definition for Props
 interface Props {
     Book: Book_Type
 }
 
 const Book_Card: FC<Props> = ({ Book }) => {
       
+    // States & Hooks
     const { dispatch } = useStore();
 
 
+    // Functions
     const handle_BookDelete = () => {
         dispatch({ type: 'SET_DELETE_ALERT', payload: true });
         dispatch({ type: 'SET_BOOK_ID', payload: Book.id });
@@ -25,6 +28,7 @@ const Book_Card: FC<Props> = ({ Book }) => {
         dispatch({ type: 'SET_FORM_OPEN', payload: true });
         dispatch({ type: 'SET_BOOK_DETAILS', payload: Book });
     }
+
 
     return (
         <main className="w-full max-w-110 border-2 rounded-xl border-black">

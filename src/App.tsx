@@ -1,34 +1,47 @@
-import { useQuery } from '@tanstack/react-query';
 import { useEffect, useMemo, useState } from 'react';
-import { GETBooks } from './api/Books';
+import { useQuery } from '@tanstack/react-query';
+import { useStore } from './hooks/useStore';
 import type { Book_Type } from './types/Books.types';
+import { GETBooks } from './api/Books';
 import Book_Card from './components/card/Book_Card';
 import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
 import Alert_Dialog from './components/alert/Alert_Dialog';
 import Add_BookForm from './components/form/Add_BookForm';
 import Edit_BookForm from './components/form/Edit_BookForm';
-import { useStore } from './hooks/useStore';
-import { Button, ButtonGroup, CircularProgress, IconButton } from '@mui/material';
+import ToolTip from './components/tooltip/CustomToolTip';
 import { RiFilterFill, RiFilterLine } from "react-icons/ri";
+import { Button, ButtonGroup, CircularProgress, IconButton } from '@mui/material';
 
 const App = () => {
+
+  //Constants
   const booksPerPage = 10;
+
+
+  // States & Hooks
+  const [filter, setFilter] = useState({ open: false, type: '', value: '' });
+  const { state, dispatch } = useStore();
   const { data, error, isLoading } = useQuery({
     queryKey: ['books'],
     queryFn: GETBooks
   });
-  const { state, dispatch } = useStore();
-  const [filter, setFilter] = useState({ open: false, type: '', value: '' });
 
   useEffect(() => {
     setTimeout(() => {
-      window.scrollTo({top: 0, behavior: 'smooth' });
-    },0)
-  }
-  , [state.page]);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 0)
+  }, [state.page]);
+
+  useEffect(() => {
+    if (data) {
+      const totalPages = Math.ceil(data.length / booksPerPage);
+      dispatch({ type: 'SET_TOTAL_PAGES', payload: totalPages });
+    }
+  }, [data, dispatch]);
 
 
+  // Filter and Pagination Logic
   const filteredData = useMemo(() => {
     if (!data) return [];
 
@@ -59,12 +72,6 @@ const App = () => {
     return filteredData.slice(start, start + booksPerPage);
   };
 
-  useEffect(() => {
-    if (data) {
-      const totalPages = Math.ceil(data.length / booksPerPage);
-      dispatch({ type: 'SET_TOTAL_PAGES', payload: totalPages });
-    }
-  }, [data, dispatch]);
 
   if (isLoading) {
     return (
@@ -90,9 +97,11 @@ const App = () => {
           {/* Filter Bar */}
           <div className="w-full h-[9dvh] flex items-center justify-center border-2 border-black rounded-xl overflow-x-auto">
             <div className="w-full h-full flex items-center justify-start gap-4">
-              <IconButton onClick={() => setFilter({ ...filter, open: !filter.open, type: '' })}>
-                {filter.open ? <RiFilterFill size={30} color='black' /> : <RiFilterLine size={30} color='black' />}
-              </IconButton>
+              <ToolTip title="Filter">
+                <IconButton onClick={() => setFilter({ ...filter, open: !filter.open, type: '' })}>
+                  {filter.open ? <RiFilterFill size={30} color='black' /> : <RiFilterLine size={30} color='black' />}
+                </IconButton>
+              </ToolTip>
               {filter.open && (
                 <ButtonGroup>
                   <Button

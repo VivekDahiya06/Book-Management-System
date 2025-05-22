@@ -1,30 +1,21 @@
-import { IconButton, TextField, InputAdornment, Tooltip, styled, type TooltipProps, tooltipClasses } from '@mui/material';
 import { useState } from 'react';
+import { useStore } from '../../hooks/useStore';
+import ToolTip from '../tooltip/CustomToolTip';
 import logo from '/images/logo.png';
 import { MdSearch } from "react-icons/md";
 import { IoMenu } from "react-icons/io5";
 import { FaBookMedical } from "react-icons/fa";
-import { useStore } from '../../hooks/useStore';
+import { IconButton, TextField, InputAdornment } from '@mui/material';
+
 
 const Header = () => {
 
-    const CustomTooltip = styled(({ className, ...props }: TooltipProps) => (
-        <Tooltip {...props} arrow classes={{ popper: className }} />
-    ))(() => ({
-        [`& .${tooltipClasses.tooltip}`]: {
-            backgroundColor: '#000000',
-            color: '#fff',            
-        },
-        [`& .${tooltipClasses.arrow}`]: {
-            color: '#000000',
-        },
-    }));
-
-
-    const [search, setSearch] = useState<string>("");
-    
+    // States & Hooks
     const { dispatch } = useStore();
+    const [search, setSearch] = useState<string>("");
 
+
+    // Functions
     const handle_Search = () => {
         dispatch({ type: 'SET_SEARCH_BOOK_FILTER', payload: search });
         dispatch({ type: 'CHANGE_PAGE', payload: 1 });
@@ -34,6 +25,7 @@ const Header = () => {
         dispatch({ type: 'SET_FORM_TYPE', payload: 'add' });
         dispatch({ type: 'SET_FORM_OPEN', payload: true });
     }
+
 
     return (
         <header className='w-full h-20 flex items-center justify-between p-5 bg-[#c5b500]'>
@@ -48,14 +40,13 @@ const Header = () => {
                     </IconButton>
                 </div>
                 <div className='hidden md:flex gap-8 items-center justify-center'>
-                    <CustomTooltip
+                    <ToolTip
                         title="Add Book"
-                        arrow
                     >
                         <IconButton onClick={handle_AddBook}>
                             <FaBookMedical size={24} color={'#000'} />
                         </IconButton>
-                    </CustomTooltip>
+                    </ToolTip>
                     <TextField
                         value={search}
                         onChange={(e) => setSearch(e.target.value)}
