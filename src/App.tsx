@@ -21,6 +21,13 @@ const App = () => {
   const { state, dispatch } = useStore();
   const [filter, setFilter] = useState({ open: false, type: '', value: '' });
 
+  useEffect(() => {
+    setTimeout(() => {
+      window.scrollTo({top: 0, behavior: 'smooth' });
+    },0)
+  }
+  , [state.page]);
+
 
   const filteredData = useMemo(() => {
     if (!data) return [];
