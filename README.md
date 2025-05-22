@@ -1,54 +1,133 @@
-# React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# 📚 Book Management System
 
-Currently, two official plugins are available:
+A responsive and user-friendly Book Management System built with **React**, styled using **MUI** and **TailwindCSS**, and powered by **React Query** for efficient data fetching. The app uses **JSON Server** as a mock RESTful API for handling book records.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## Expanding the ESLint configuration
+- 📖 View a paginated list of books (10 per page)
+- 🔍 Search books by title using the search bar in the header
+- 🎯 Filter books by `Genre`, `Status`, or `Author`
+- ➕ Add new books via a modal form
+- ✏️ Edit existing book details
+- 🗑️ Delete books with confirmation
+- 📤 Uses **PUT** and **PATCH** for full or partial updates
+- 🌐 Mock API powered by **JSON Server**
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🧩 Tech Stack
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+| Technology | Purpose |
+|------------|---------|
+| **React** | Frontend UI |
+| **MUI (Material UI)** | Styled components |
+| **TailwindCSS** | Utility-first styling |
+| **React Query** | Data fetching & caching |
+| **Axios** | HTTP client for API requests |
+| **JSON Server** | Mock RESTful backend |
+| **React Icons** | Icon library |
+| **TypeScript** | Type safety and tooling |
+
+## 📁 Folder Structure
+
+```
+├── public/
+├── src/
+│   ├── api/                # Axios + JSON Server requests
+│   ├── components/
+│   │   ├── card/           # Book card UI
+│   │   ├── form/           # Add/Edit book forms
+│   │   ├── alert/          # Alert dialog component
+│   │   ├── header/         # App header with search bar
+│   │   └── footer/         # App footer
+│   ├── hooks/              # Custom hooks like useStore
+│   ├── types/              # TypeScript type definitions
+│   └── App.tsx             # Main component
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 📦 Getting Started
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### 1. Clone the Repository
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+```bash
+git clone https://github.com/your-username/book-management-system.git
 ```
+
+### 2. Move to Local Repository
+
+```bash
+cd book-management-system
+```
+
+### 3. Install dependencies
+
+```bash
+npm install
+```
+
+### 4. Clone Json Server from Another Repository
+
+```bash
+git clone https://github.com/VivekDahiya06/api-books.git
+```
+
+### 5. Change to Local repository
+
+```bash
+cd api-books
+```
+
+### 6. Install the Dependencies
+
+```bash
+npm install
+```
+
+### 7. Start the Local DB.Json Server
+
+```bash
+npm start
+```
+
+> The server runs at `http://localhost:3000`.
+
+### 8. Change the URL in src/api/Books.ts from
+> https://my-json-server.typicode.com/VivekDahiya06/api-books/books to
+> http://localhost:3000/books
+
+This is necessary in order for your app to communicate to local API rather than remote API. Because the remote API is a Read-Only Server.
+
+### 9. Start the React app in the Other Repository that has Book Management System
+
+```bash
+npm run dev
+```
+
+## 🌐 API Endpoints (JSON Server)
+
+| Method | Endpoint           | Description             |
+|--------|--------------------|-------------------------|
+| GET    | `/books`           | Get all books           |
+| POST   | `/books`           | Add a new book          |
+| PUT    | `/books/:id`       | Replace a book entirely |
+| PATCH  | `/books/:id`       | Update fields in a book |
+| DELETE | `/books/:id`       | Delete a book           |
+
+## 🧠 Filtering & Searching Logic
+
+- You can **search by title** using the search bar in the header.
+- You can **filter by genre, author, or status** using the filter bar.
+- If both search and filters are applied, results are combined (AND logic).
+- If only one is used, results reflect that filter or search query alone.
+
+## 🖼️ Screenshots
+
+> App screenshots here for better visualization.
+
+---
+
+### 👨‍💻 Developed By
+
+**Vivek Dahiya**  
+Developer
+
+> Feel free to contribute or fork this project!
