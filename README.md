@@ -67,7 +67,15 @@ cd book-management-system
 npm install
 ```
 
-### 4. Start the Local db.json Server
+### 4. Go to src/api/Books.ts
+ - In order to run json-server locally, uncomment the localUrl and change all api requests from remoteUrl to localUrl.
+ For Eg:-<br>
+ ```bash
+ await axios.get(remoteUrl) ➡ await axios.get(localUrl).
+ ```
+ >Note :- I'm using remoteUrl so that my application can run when some clicks on the live link to check my app. Otherwise they will have to clone the repo. and run the server locally to get db.json data.
+
+### 5. Start the Local db.json Server
 
 ```bash
 npm run json-server
@@ -76,7 +84,7 @@ npm run json-server
 >1) The local server runs at `http://localhost:3000/books`.
 >2) The remote server runs at `https://my-json-server.typicode.com/VivekDahiya06/Book-Management-System/books`.
 
-### 5. Start the React server in a new Terminal.
+### 6. Start the React server in a new Terminal.
 
 ```bash
 npm run dev
@@ -84,7 +92,7 @@ npm run dev
 
 >Note :- At the end make sure both terminals are running i.e.<br>
 >1) npm run json-server ➡ Starts Json Server
->2) npm run dev ➡ Starts React Application
+>2) npm run dev ➡ Starts React Application 
 
 
 ## 🌐 API Endpoints (JSON Server)
