@@ -67,13 +67,14 @@ cd book-management-system
 npm install
 ```
 
-### 4. Start the Local DB.Json Server
+### 4. Start the Local db.json Server
 
 ```bash
 npm run json-server
 ```
 
-> The server runs at `http://localhost:3000`.
+>1) The local server runs at `http://localhost:3000/books`.
+>2) The remote server runs at `https://my-json-server.typicode.com/VivekDahiya06/Book-Management-System/books`.
 
 ### 5. Start the React server in a new Terminal.
 
