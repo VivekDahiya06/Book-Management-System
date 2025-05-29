@@ -1,0 +1,244 @@
+{
+  "books": [
+    {
+      "id": 1,
+      "title": "To the Lighthouse",
+      "author": "Virginia Woolf",
+      "genre": "Classic",
+      "publishedYear": 1927,
+      "status": "Available"
+    },
+    {
+      "id": 2,
+      "title": "Crime and Punishment",
+      "author": "Fyodor Dostoevsky",
+      "genre": "Fiction",
+      "publishedYear": 1901,
+      "status": "Issued"
+    },
+    {
+      "id": 3,
+      "title": "The Trial",
+      "author": "Franz Kafka",
+      "genre": "Dystopian",
+      "publishedYear": 1925,
+      "status": "Available"
+    },
+    {
+      "id": 4,
+      "title": "Don Quixote",
+      "author": "Miguel de Cervantes",
+      "genre": "Adventure",
+      "publishedYear": 1902,
+      "status": "Issued"
+    },
+    {
+      "id": 5,
+      "title": "Wuthering Heights",
+      "author": "Emily Brontë",
+      "genre": "Romance",
+      "publishedYear": 1903,
+      "status": "Available"
+    },
+    {
+      "id": 6,
+      "title": "A Tale of Two Cities",
+      "author": "Charles Dickens",
+      "genre": "Historical",
+      "publishedYear": 1904,
+      "status": "Issued"
+    },
+    {
+      "id": 7,
+      "title": "Dracula",
+      "author": "Bram Stoker",
+      "genre": "Horror",
+      "publishedYear": 1905,
+      "status": "Available"
+    },
+    {
+      "id": 8,
+      "title": "Frankenstein",
+      "author": "Mary Shelley",
+      "genre": "Horror",
+      "publishedYear": 1906,
+      "status": "Issued"
+    },
+    {
+      "id": 9,
+      "title": "The Metamorphosis",
+      "author": "Franz Kafka",
+      "genre": "Fiction",
+      "publishedYear": 1915,
+      "status": "Available"
+    },
+    {
+      "id": 10,
+      "title": "Anna Karenina",
+      "author": "Leo Tolstoy",
+      "genre": "Drama",
+      "publishedYear": 1907,
+      "status": "Issued"
+    },
+    {
+      "id": 11,
+      "title": "The Idiot",
+      "author": "Fyodor Dostoevsky",
+      "genre": "Classic",
+      "publishedYear": 1908,
+      "status": "Available"
+    },
+    {
+      "id": 12,
+      "title": "Madame Bovary",
+      "author": "Gustave Flaubert",
+      "genre": "Drama",
+      "publishedYear": 1909,
+      "status": "Issued"
+    },
+    {
+      "id": 13,
+      "title": "One Hundred Years of Solitude",
+      "author": "Gabriel García Márquez",
+      "genre": "Fantasy",
+      "publishedYear": 1967,
+      "status": "Available"
+    },
+    {
+      "id": 14,
+      "title": "The Picture of Dorian Gray",
+      "author": "Oscar Wilde",
+      "genre": "Fiction",
+      "publishedYear": 1910,
+      "status": "Issued"
+    },
+    {
+      "id": 15,
+      "title": "Beloved",
+      "author": "Toni Morrison",
+      "genre": "Historical",
+      "publishedYear": 1987,
+      "status": "Available"
+    },
+    {
+      "id": 16,
+      "title": "Siddhartha",
+      "author": "Hermann Hesse",
+      "genre": "Philosophical",
+      "publishedYear": 1922,
+      "status": "Issued"
+    },
+    {
+      "id": 17,
+      "title": "The Divine Comedy",
+      "author": "Dante Alighieri",
+      "genre": "Epic",
+      "publishedYear": 1911,
+      "status": "Available"
+    },
+    {
+      "id": 18,
+      "title": "Les Misérables",
+      "author": "Victor Hugo",
+      "genre": "Drama",
+      "publishedYear": 1912,
+      "status": "Issued"
+    },
+    {
+      "id": 19,
+      "title": "The Count of Monte Cristo",
+      "author": "Alexandre Dumas",
+      "genre": "Adventure",
+      "publishedYear": 1913,
+      "status": "Available"
+    },
+    {
+      "id": 20,
+      "title": "The Bell Jar",
+      "author": "Sylvia Plath",
+      "genre": "Fiction",
+      "publishedYear": 1963,
+      "status": "Issued"
+    },
+    {
+      "id": 21,
+      "title": "Ulysses",
+      "author": "James Joyce",
+      "genre": "Modernist",
+      "publishedYear": 1922,
+      "status": "Available"
+    },
+    {
+      "id": 22,
+      "title": "A Clockwork Orange",
+      "author": "Anthony Burgess",
+      "genre": "Dystopian",
+      "publishedYear": 1962,
+      "status": "Issued"
+    },
+    {
+      "id": 23,
+      "title": "The Stranger",
+      "author": "Albert Camus",
+      "genre": "Philosophical",
+      "publishedYear": 1942,
+      "status": "Available"
+    },
+    {
+      "id": 24,
+      "title": "The Grapes of Wrath",
+      "author": "John Steinbeck",
+      "genre": "Historical",
+      "publishedYear": 1939,
+      "status": "Issued"
+    },
+    {
+      "id": 25,
+      "title": "The Sun Also Rises",
+      "author": "Ernest Hemingway",
+      "genre": "Fiction",
+      "publishedYear": 1926,
+      "status": "Available"
+    },
+    {
+      "id": 26,
+      "title": "Invisible Man",
+      "author": "Ralph Ellison",
+      "genre": "Classic",
+      "publishedYear": 1952,
+      "status": "Issued"
+    },
+    {
+      "id": 27,
+      "title": "Things Fall Apart",
+      "author": "Chinua Achebe",
+      "genre": "Historical",
+      "publishedYear": 1958,
+      "status": "Available"
+    },
+    {
+      "id": 28,
+      "title": "Native Son",
+      "author": "Richard Wright",
+      "genre": "Drama",
+      "publishedYear": 1940,
+      "status": "Issued"
+    },
+    {
+      "id": 29,
+      "title": "The Old Man and the Sea",
+      "author": "Ernest Hemingway",
+      "genre": "Adventure",
+      "publishedYear": 1952,
+      "status": "Available"
+    },
+    {
+      "id": 30,
+      "title": "Atlas Shrugged",
+      "author": "Ayn Rand",
+      "genre": "Philosophical",
+      "publishedYear": 1957,
+      "status": "Issued"
+    }
+  ]
+}

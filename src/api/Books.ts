@@ -1,23 +1,24 @@
 import axios from "axios";
 import type { Book_Type } from "../types/Books.types";
 
-const url = 'https://my-json-server.typicode.com/VivekDahiya06/api-books/books';
+// const remoteUrl = 'https://my-json-server.typicode.com/VivekDahiya06/Book-Management-System/books';
+const localUrl = 'http://localhost:3000/books';
 
 export const GETBooks = async () => {
-    const response = await axios.get(url);
+    const response = await axios.get(localUrl);
     return response.data;
 }
 
 export const POSTBooks = async (book: Book_Type) => {
-    const response = await axios.post(url, book);
+    const response = await axios.post(localUrl, book);
     return response;
 }
 
 export const PUTBooks = async (book: Book_Type) => {
-    const response = await axios.patch(url+`/${book.id}`, { book });
+    const response = await axios.patch(localUrl+`/${book.id}`, { book });
     return response;
 }
 export const DELETEBooks = async (id: number) => {
-    const response = await axios.delete(url+`/${id}`);
+    const response = await axios.delete(localUrl+`/${id}`);
     return response;
 }

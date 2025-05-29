@@ -42,6 +42,9 @@ A responsive and user-friendly Book Management System built with **React**, styl
 │   ├── hooks/              # Custom hooks like useStore
 │   ├── types/              # TypeScript type definitions
 │   └── App.tsx             # Main component
+|
+|── db.json                 # Database Json file.
+|
 ```
 
 ## 📦 Getting Started
@@ -64,43 +67,24 @@ cd book-management-system
 npm install
 ```
 
-### 4. Clone Json Server from Another Repository
+### 4. Start the Local DB.Json Server
 
 ```bash
-git clone https://github.com/VivekDahiya06/api-books.git
-```
-
-### 5. Change to Local repository
-
-```bash
-cd api-books
-```
-
-### 6. Install the Dependencies
-
-```bash
-npm install
-```
-
-### 7. Start the Local DB.Json Server
-
-```bash
-npm start
+npm run json-server
 ```
 
 > The server runs at `http://localhost:3000`.
 
-### 8. Change the URL in src/api/Books.ts from
-> https://my-json-server.typicode.com/VivekDahiya06/api-books/books to
-> http://localhost:3000/books
-
-This is necessary in order for your app to communicate to local API rather than remote API. Because the remote API is a Read-Only Server.
-
-### 9. Start the React app in the Other Repository that has Book Management System
+### 5. Start the React server in a new Terminal.
 
 ```bash
 npm run dev
 ```
+
+>Note :- At the end make sure both terminals are running i.e.<br>
+>1) npm run json-server ➡ Starts Json Server
+>2) npm run dev ➡ Starts React Application
+
 
 ## 🌐 API Endpoints (JSON Server)
 
