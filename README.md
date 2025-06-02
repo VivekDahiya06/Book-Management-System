@@ -49,19 +49,19 @@ A responsive and user-friendly Book Management System built with **React**, styl
 
 ## 📦 Getting Started
 
-### 1. Clone the Repository
+### 1. Clone the repository:
 
 ```bash
-git clone https://github.com/your-username/book-management-system.git
+git clone https://github.com/VivekDahiya06/Book-Management-System.git
 ```
 
-### 2. Move to Local Repository
+### 2. Go to project directory:
 
 ```bash
-cd book-management-system
+cd Book-Management-System
 ```
 
-### 3. Install dependencies
+### 3. Install dependencies:
 
 ```bash
 npm install
